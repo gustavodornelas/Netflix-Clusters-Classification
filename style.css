@@ -1,0 +1,324 @@
+/* Estilos gerais */
+body {
+    background-color: #1d1d1d;
+    color: #fff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #bbbbbb;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: .5rem;
+    border: none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: .5rem;
+    transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: darkred;
+}
+
+#scrollToTopButton {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    background-color: red;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#scrollToTopButton:hover {
+    background-color: darkred;
+}
+
+/* Estilos do cabeçalho */
+header {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Estilos para o menu lateral */
+.menu {
+    width: 300px;
+    height: 100vh;
+    overflow-y: scroll;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    background-color: #181818;
+    font-weight: bold;
+
+    transition: left 0.3s ease;
+}
+
+.menu.show {
+    left: 0;
+}
+
+.menu-icon,
+.search-icon {
+    cursor: pointer;
+    transition: color .3s ease;
+}
+
+.menu-icon:hover,
+.search-icon:hover {
+    color: #bbbbbb;
+}
+
+.menu-icon {
+    font-size: 3rem;
+}
+
+.genero-item {
+    padding: 1rem;
+    cursor: pointer;
+    border-bottom: .3rem solid #1d1d1d;
+
+    transition: .3s ease-in;
+}
+
+.genero-item:hover {
+    background-color: #1d1d1d;
+}
+
+/* estilo para a janela popup */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-content {
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    column-gap: .5rem;
+    background-color: #1d1d1d;
+    padding: 1rem;
+    border-radius: .5rem;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+    max-width: 80vw;
+    width: 80vw;
+    max-height: 80vh;
+    height: 80vh;
+}
+
+.popup h2 {
+    margin-top: 0;
+}
+
+.popup img {
+    width: 100%;
+}
+
+.popup ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.popup li {
+    margin-bottom: 1rem;
+}
+
+.popup li:last-child {
+    margin-bottom: 0;
+}
+
+.popup strong {
+    font-weight: bold;
+}
+
+.popup-info {
+    text-align: justify;
+}
+
+.stars {
+    width: 100%;
+    text-align: center;
+}
+
+.fa-star {
+    font-size: 2rem;
+}
+
+.yellow-star {
+    color: yellow;
+}
+
+.logo-container {
+    display: flex;
+}
+
+/* Estilos do logotipo */
+.logo {
+    color: #e50914;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-left: 2rem;
+    cursor: pointer;
+
+    transition: color .3s ease;
+}
+
+.logo:hover {
+    color: darkred;
+}
+
+/* Estilos da barra de pesquisa */
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.search-icon {
+    color: #fff;
+    margin-right: .5rem;
+}
+
+.search-input {
+    background-color: transparent;
+    border: none;
+    border-bottom: .2rem solid #fff;
+    color: #fff;
+    font-size: 1rem;
+    padding: .5rem;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    width: 200px;
+}
+
+/* Estilos do conteúdo principal */
+.main-content {
+    padding: 40px;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+/* Estilos do título */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Estilos dos filmes em destaque */
+.featured-movies {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.movie {
+    margin: 1rem;
+    text-align: left;
+}
+
+.movie-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #131313;
+    padding: .5rem;
+    border-radius: .5rem;
+    height: 22rem;
+    cursor: pointer;
+
+    transition: .3s ease-in;
+}
+
+.movie-box:hover {
+    background-color: #181818;
+}
+
+.movie-image {
+    width: 200px;
+    border-radius: .2rem;
+}
+
+.movie-title {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+/* Estilos da paginação */
+.pagination {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-link {
+    margin: 0 .5rem;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    background-color: #e50914;
+    color: #fff;
+    text-decoration: none;
+}
+
+.page-link:hover {
+    background-color: #b2070e;
+}
+
+.page-link.current {
+    background-color: #b2070e;
+    font-weight: bold;
+}
+
+/* Estilos do rodapé */
+footer {
+    padding: 1rem;
+    text-align: center;
+}
+
+.footer-menu {
+    width: 50%;
+    margin: auto;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
