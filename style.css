@@ -12,7 +12,7 @@ a {
     text-decoration: none;
 }
 
-footer a:hover {
+footer a:hover, p a:hover {
     color: #bbbbbb;
 }
 
@@ -179,6 +179,10 @@ header {
 
 .yellow-star {
     color: yellow;
+}
+
+.popup-classification {
+    text-align: center;
 }
 
 .logo-container {

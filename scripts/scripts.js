@@ -51,7 +51,7 @@ async function carregarFilme(filme) {
     var movieImage = document.createElement('img');
     movieImage.className = 'movie-image';
     movieImage.alt = filme.title;
-    movieImage.src = (filme.poster_path) ? 'https://image.tmdb.org/t/p/w500' + filme.poster_path : 'image-not-found.png';
+    movieImage.src = (filme.poster_path) ? 'https://image.tmdb.org/t/p/w500' + filme.poster_path : 'images/image-not-found.png';
 
     var movieTitle = document.createElement('div');
     movieTitle.className = 'movie-title';
@@ -124,19 +124,37 @@ function exibirDetalhesFilme(filme) {
         filme.tmdb_score
     ]
 
-    var cluster = encontrarClusterMaisProximo(score);
-    console.log(cluster);
+    // Classificar por K-Medoids
+    var kmedoids = encontrarClusterMaisProximoKmedoids(score);
+    console.log("K-Medoids Cluster: " + kmedoids);
     var popupStars = document.createElement('div');
     popupStars.className = 'stars';
     for (let i = 0; i < 5; i++) {
         
         let star = document.createElement('i');
         star.className = 'fa-solid fa-star';
-        if (i < cluster) {
+        if (i < kmedoids) {
             star.className = 'fa-solid fa-star yellow-star';
         }
 
         popupStars.appendChild(star);
+    }
+
+    // Classificar por K-Means
+    var kmeans = encontrarClusterMaisProximoKmeans(score);
+    console.log("K-Means Cluster: " + kmeans);
+    var popupClassification = document.createElement('p');
+    popupClassification.className = 'popup-classification';
+
+    if (kmeans == 0) {
+        popupClassification.textContent = 'this movie has a bad rating or the data is not filled in correctly!';
+    } else if (kmeans == 1) {
+        popupClassification.textContent = 'This movie has a regular rating!';
+    } else if (kmeans == 2) {
+        popupClassification.textContent = 'This movie has a god rating!';
+    } else {
+        popupClassification.textContent = 'this movie data is not filled in correctly!';
+
     }
 
     
@@ -169,7 +187,7 @@ function exibirDetalhesFilme(filme) {
     infoContainer.appendChild(popupInfo);
     infoContainer.appendChild(popupScoreTitle);
     infoContainer.appendChild(popupStars);
-
+    infoContainer.appendChild(popupClassification);
     popupContent.appendChild(infoContainer);
     popup.appendChild(popupContent);
     document.body.appendChild(popup);
@@ -337,7 +355,7 @@ function saiu(target) {
 
 // Função para ler o arquivo JSON e salvar os filmes no vetor
 function carregarFilmes() {
-    fetch('filmes.json') // Substitua 'filmes.json' pelo caminho correto do seu arquivo JSON
+    fetch('scripts/filmes.json') // Substitua 'filmes.json' pelo caminho correto do seu arquivo JSON
         .then(response => response.json())
         .then(data => {
             filmes = data;
