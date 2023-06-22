@@ -97,7 +97,7 @@ function exibirDetalhesFilme(filme) {
     var movieImage = document.createElement('img');
     movieImage.className = 'movie-image';
     movieImage.alt = filme.title;
-    movieImage.src = (filme.poster_path) ? 'https://image.tmdb.org/t/p/w500' + filme.poster_path : 'image-not-found.png';
+    movieImage.src = (filme.poster_path) ? 'https://image.tmdb.org/t/p/w500' + filme.poster_path : 'images/image-not-found.png';
     posterContainer.appendChild(movieImage);
 
     // Cria a div com as informações do filme
