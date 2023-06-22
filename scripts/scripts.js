@@ -117,11 +117,11 @@ function exibirDetalhesFilme(filme) {
     var popupScoreTitle = document.createElement('h3');
     popupScoreTitle.textContent = 'Score according to AI calculations';
 
-    score = [
-        filme.imdb_score,
-        filme.imdb_votes,
-        filme.tmdb_popularity,
-        filme.tmdb_score
+    const score = [
+        filme.imdb_score_normalized,
+        filme.imdb_votes_normalized,
+        filme.tmdb_popularity_normalized,
+        filme.tmdb_score_normalized
     ]
 
     // Classificar por K-Medoids
@@ -383,7 +383,7 @@ function carregarFilmes() {
 
                     //salvando o vetor no objeto filme
                     filme.production_countries = movieCountries;
-                }
+                }                
             });
 
             generos.sort();
